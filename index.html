@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kinetix Forge Fit Club — build strength, confidence and consistency. Explore coaching, strength training and group classes.">
+  <title>Kinetix Forge Fit Club | Train With Purpose</title>
+  <style>
+    :root {
+      --brand: #c8ff35;
+      --brand-dark: #a6dc19;
+      --bg: #10120f;
+      --surface: #191c17;
+      --surface-2: #22261f;
+      --text: #f5f6f1;
+      --muted: #a9afa1;
+      --line: rgba(255,255,255,.12);
+      --nav-bg: rgba(16,18,15,.88);
+      --shadow: 0 18px 50px rgba(0,0,0,.25);
+    }
+    body.light {
+      --bg: #f5f6f1;
+      --surface: #ffffff;
+      --surface-2: #e9ede2;
+      --text: #171a14;
+      --muted: #5d6657;
+      --line: rgba(20,30,10,.14);
+      --nav-bg: rgba(245,246,241,.9);
+      --shadow: 0 18px 50px rgba(25,35,15,.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; transition: background .25s, color .25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .container { width: min(1120px, 90%); margin: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--nav-bg); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .logo { font-size: 1.05rem; font-weight: 900; letter-spacing: .04em; }
+    .logo span { color: var(--brand); }
+    .nav-links { display: flex; align-items: center; gap: 27px; }
+    .nav-links a { color: var(--muted); font-size: .92rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .icon-btn, .menu-btn {
+      border: 1px solid var(--line); color: var(--text); background: var(--surface);
+      border-radius: 50px; padding: 10px 13px; cursor: pointer; font-size: 1rem;
+    }
+    .menu-btn { display: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 21px; border-radius: 5px; font-weight: 900;
+      background: var(--brand); color: #15180f; border: 2px solid var(--brand);
+      transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--brand-dark); }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--line); }
+    .eyebrow { color: var(--brand); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 900; }
+    .hero {
+      min-height: 650px; display: flex; align-items: center; position: relative;
+      background: linear-gradient(90deg, rgba(8,10,7,.94) 0%, rgba(8,10,7,.72) 48%, rgba(8,10,7,.15) 100%),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=85") center/cover;
+    }
+    .hero-content { max-width: 670px; padding: 90px 0; }
+    .hero h1 { font-size: clamp(3rem, 7vw, 5.9rem); line-height: .98; letter-spacing: -.055em; margin: 18px 0 22px; text-transform: uppercase; }
+    .hero h1 span { color: var(--brand); }
+    .hero p { color: #d4d8ce; max-width: 520px; font-size: 1.08rem; margin-bottom: 30px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; margin-top: 54px; max-width: 560px; }
+    .stat { border-left: 2px solid var(--brand); padding-left: 14px; }
+    .stat strong { display: block; font-size: 1.5rem; }
+    .stat span { color: #c4c9bd; font-size: .82rem; }
+    section { padding: 92px 0; }
+    .section-head { max-width: 650px; margin-bottom: 38px; }
+    .section-head h2 { font-size: clamp(2rem,4vw,3.3rem); line-height: 1.05; letter-spacing: -.04em; margin: 12px 0; text-transform: uppercase; }
+    .section-head p { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .about-image { height: 450px; border-radius: 8px; box-shadow: var(--shadow); }
+    .about-copy h2 { font-size: clamp(2rem,4vw,3.2rem); line-height: 1.05; margin: 13px 0 20px; text-transform: uppercase; }
+    .about-copy p { color: var(--muted); margin-bottom: 17px; }
+    .check-list { list-style: none; display: grid; gap: 10px; margin: 24px 0 28px; }
+    .check-list li::before { content: "✓"; color: var(--brand); font-weight: 900; margin-right: 10px; }
+    .services { background: var(--surface); }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .service-card { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .service-card img { height: 220px; }
+    .card-body { padding: 23px; }
+    .card-body h3 { font-size: 1.25rem; margin-bottom: 9px; text-transform: uppercase; }
+    .card-body p { color: var(--muted); font-size: .94rem; }
+    .number { color: var(--brand); font-weight: 900; font-size: .8rem; letter-spacing: .12em; }
+    .banner {
+      padding: 65px; border-radius: 10px;
+      background: linear-gradient(90deg, rgba(10,12,8,.92), rgba(10,12,8,.55)),
+        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1600&q=85") center/cover;
+    }
+    .banner h2 { max-width: 650px; font-size: clamp(2rem,5vw,3.8rem); line-height: 1.03; text-transform: uppercase; margin: 12px 0 22px; }
+    .banner p { color: #d4d8ce; max-width: 550px; margin-bottom: 25px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .review { padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+    .stars { color: var(--brand); letter-spacing: .15em; margin-bottom: 13px; }
+    .review p { color: var(--muted); margin-bottom: 18px; }
+    .review strong { display: block; }
+    .review small { color: var(--muted); }
+    .contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 45px; }
+    .contact-info h2 { font-size: clamp(2rem,4vw,3.1rem); line-height: 1.05; margin: 12px 0 18px; text-transform: uppercase; }
+    .contact-info p { color: var(--muted); margin-bottom: 22px; }
+    .contact-item { margin: 18px 0; }
+    .contact-item span { display: block; color: var(--brand); font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
+    .contact-item strong { font-weight: 700; }
+    .contact-panel { padding: 30px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+    .contact-panel h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .contact-panel p { color: var(--muted); margin-bottom: 20px; }
+    .contact-panel a { margin-top: 8px; }
+    footer { padding: 30px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: .88rem; }
+    .footer-inner strong { color: var(--text); }
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none; position: absolute; top: 76px; left: 0; right: 0;
+        padding: 22px 5%; background: var(--surface); border-bottom: 1px solid var(--line);
+        flex-direction: column; align-items: flex-start; gap: 18px;
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: inline-block; }
+      .nav-actions .btn { display: none; }
+      .hero { min-height: 610px; background-position: 60% center; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-image { height: 330px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .banner { padding: 38px 26px; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 68px 0; }
+      .hero { min-height: 590px; }
+      .hero h1 { font-size: 3.15rem; }
+      .stats { gap: 8px; }
+      .stat strong { font-size: 1.2rem; }
+      .stat span { font-size: .72rem; }
+      .cards, .reviews-grid { grid-template-columns: 1fr; }
+      .service-card img { height: 230px; }
+      .contact-panel { padding: 23px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home">KINETIX <span>FORGE</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Training</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">☀️</button>
+        <a class="btn" href="#contact">Join the club</a>
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Open navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">Strength • Discipline • Community</span>
+          <h1>Forge a <span>stronger</span> you.</h1>
+          <p>Train with purpose at Kinetix Forge Fit Club. Build strength, improve your energy and become more confident — one session at a time.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">Start your journey ↗</a>
+            <a class="btn btn-outline" href="#services">Explore training</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>01:1</strong><span>Personal attention</span></div>
+            <div class="stat"><strong>All levels</strong><span>Beginner friendly</span></div>
+            <div class="stat"><strong>Every day</strong><span>Progress mindset</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <img class="about-image" src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1100&q=85" alt="Athlete training with weights in a gym">
+        <div class="about-copy">
+          <span class="eyebrow">Welcome to Kinetix Forge</span>
+          <h2>More than a gym. A place to grow.</h2>
+          <p>Kinetix Forge Fit Club is a fitness space built around consistency, supportive coaching and meaningful progress. Whether you are taking your first step or working toward a new personal best, you belong here.</p>
+          <p>Our goal is simple: help every member train safely, stay motivated and build habits that last beyond the gym.</p>
+          <ul class="check-list">
+            <li>Supportive, goal-focused training</li>
+            <li>Options for beginners and experienced members</li>
+            <li>A clean, motivating workout environment</li>
+          </ul>
+          <a class="btn" href="#contact">Meet your next goal ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Train your way</span>
+          <h2>Find your strength.</h2>
+          <p>Choose a training style that matches your goals. Our team can help you find the right starting point.</p>
+        </div>
+        <div class="cards">
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Strength training with dumbbells">
+            <div class="card-body"><span class="number">01 / BUILD</span><h3>Strength Training</h3><p>Build a strong foundation with guided resistance exercises and progressive workouts.</p></div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85" alt="Person running for cardio fitness">
+            <div class="card-body"><span class="number">02 / MOVE</span><h3>Cardio & Conditioning</h3><p>Improve stamina and endurance with energetic sessions designed around your pace.</p></div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=85" alt="Personal trainer coaching a gym member">
+            <div class="card-body"><span class="number">03 / FOCUS</span><h3>Personal Coaching</h3><p>Get focused guidance, goal tracking and a plan shaped around your fitness journey.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="banner">
+          <span class="eyebrow">Your next chapter starts here</span>
+          <h2>Show up today. Get stronger tomorrow.</h2>
+          <p>Big changes begin with small, consistent steps. Come in, meet the team and find a routine that works for you.</p>
+          <a class="btn" href="#contact">Talk to our team ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Member stories</span>
+          <h2>Progress feels better together.</h2>
+          <p>These are sample testimonial layouts. Replace them with genuine customer feedback before presenting the site as a real client website.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review"><div class="stars">★★★★★</div><p>“The welcoming atmosphere makes it easier to stay consistent. The coaching team helps me focus on steady progress.”</p><strong>Sample Member</strong><small>Strength training</small></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“I feel more confident with every session. Having a clear plan and supportive people around makes a real difference.”</p><strong>Sample Member</strong><small>Fitness journey</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Let's get moving</span>
+          <h2>Ready to join the club?</h2>
+          <p>Have a question or want to visit? Contact us and take the first step toward your fitness goals.</p>
+          <div class="contact-item"><span>Phone</span><strong>+91 9352022580 </strong></div>
+          <div class="contact-item"><span>Address</span><strong>RX4C+W3, Kongpal Kongkham Leikai, Imphal, Khurai Konsam Leikai, Manipur 795005</strong></div>
+          <div class="contact-item"><span>Hours</span><strong>5 am - 10 pm</strong></div>
+        </div>
+        <div class="contact-panel">
+          <h3>Book a visit</h3>
+          <p>Message us to ask about membership, training options or a first visit.</p>
+          <a class="btn" href="https://wa.me/919352022580?text=Hello%20Kinetix%20Forge%20Fit%20Club%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+          <p style="font-size:.8rem;margin-top:18px;">Demo link: replace the number in this button with the business WhatsApp number (country code + number, digits only).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <strong>KINETIX FORGE FIT CLUB</strong>
+      <span>Train with purpose. Grow with consistency.</span>
+      <span>© <span id="year"></span> Kinetix Forge. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    // Dark mode toggle
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      themeToggle.textContent = isLight ? "🌙" : "☀️";
+      themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+    });
+
+    // Mobile navigation
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuToggle.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
